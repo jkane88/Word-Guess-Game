@@ -9,27 +9,29 @@ var losses = 0;
 var guessesLeft = 6;
 var guessedLetters = "";
 var lastWord = "";
-var currentproducer;
-var previousproducer;
+var currentProducer;
+var previousProducer;
 
 
 
 // ==== OBJECTS ====
-class producer {
-    constructor(keyword) {
+class Producer {
+    constructor(keyword, album1, album2, album3, imgPath) {
         this.keyword = keyword.toLowerCase();
-        // this.make = producer;
-        // this.model = albums;
-        // this.imgPath = "assets/images/" + keyword + ".jpg";
+        this.album1 = album1;
+        this.album2 = album2;
+        this.album3 = album3;
+        this.imgPath = "assets/images/" + keyword + ".jpg";
+    
     }
 }
 
 // Producers to be guessed
-var p01 = new producer('jdilla');
-var p02 = new producer('eevee');
-var p03 = new producer('mfdoom');
-var p04 = new producer('ohbliv');
-var p05 = new producer('tomppabeats');
+var p01 = new Producer('jdilla');
+var p02 = new Producer('eevee');
+var p03 = new Producer('mfdoom');
+var p04 = new Producer('ohbliv');
+var p05 = new Producer('tomppabeats');
 
 // Array of all producers
 var producers = [p01, p02, p03, p04, p05];
@@ -86,7 +88,7 @@ function checkIfSolved(string) {
         document.getElementById("wins-text").innerHTML = wins;
 
         // Show 'prod-info' jumbotron
-        showProd(previousproducer);
+        showProd(previousProducer);
     }
 
 }
@@ -94,9 +96,9 @@ function checkIfSolved(string) {
 function newGame() {
     if(typeof wordToGuess !== "undefined"){
         lastWord = wordToGuess;
-        previousproducer = currentproducer;
+        previousProducer = currentProducer;
         // lastWord = previousproducer.keyword;
-        showprod(previousproducer);
+        showProd(previousProducer);
     }
 
     // Show instructions text animation
@@ -194,10 +196,10 @@ function refresh() {
     document.getElementById("lastWord-text").innerHTML = lastWord;
 }
 
-function showprod(producer) {
+function showProd(Producer) {
     document.getElementById("prod-info").style.visibility = "visible";    
-    document.getElementById("prodImage").outerHTML = "<img id='prodImage' src='" + producer.imgPath + "' alt='image'>";
-    document.getElementById("prodAlbums-text").innerHTML = producer.albums;
+    document.getElementById("prodImage").outerHTML = "<img id='prodImage' src='" + Producer.imgPath + "' alt='image'>";
+    // document.getElementById("prodAlbums-text").innerHTML = Producer.albums;
 }
 
 
