@@ -199,7 +199,7 @@ function refresh() {
 function showProd(Producer) {
     document.getElementById("prod-info").style.visibility = "visible";    
     document.getElementById("prodImage").outerHTML = "<img id='prodImage' src='" + Producer.imgPath + "' alt='image'>";
-    // document.getElementById("prodAlbums-text").innerHTML = Producer.albums;
+    // document.getElementById("album1-text").innerHTML = Producer.album1;
 }
 
 
